@@ -1,3 +1,6 @@
+export { Button } from './Button.js';
+export { Chip } from './Chip.js';
+export { FIELD_CLASS } from './fieldClass.js';
 export { Modal } from './Modal.js';
 export { Nav } from './Nav.js';
 export { currentNavHref } from './navHref.js';
