@@ -1,7 +1,9 @@
 {
 	"extends": "@sapphire-sh/utils/tsconfig.json",
 	"compilerOptions": {
-		"jsx": "react-jsx"
+		"jsx": "react-jsx",
+		"module": "ESNext",
+		"moduleResolution": "bundler"
 	},
 	"include": ["src", "*.ts", "*.js"]
 }
