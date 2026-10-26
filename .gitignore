@@ -1,0 +1,14 @@
+# @sapphire-sh/utils:start
+*.log
+*.tsbuildinfo
+.DS_Store
+.env
+.next/
+/build/
+/coverage/
+/data/
+/dist/
+/lib/
+next-env.d.ts
+node_modules/
+# @sapphire-sh/utils:end
