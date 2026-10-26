@@ -52,4 +52,16 @@ describe('Toast', () => {
 		});
 		expect(screen.getByRole('status').textContent).toBe('');
 	});
+
+	it('clears pending toast timers when the provider unmounts', () => {
+		const { unmount } = render(
+			<ToastProvider>
+				<ShowButton />
+			</ToastProvider>,
+		);
+		fireEvent.click(screen.getByRole('button', { name: 'show' }));
+		expect(vi.getTimerCount()).toBe(1);
+		unmount();
+		expect(vi.getTimerCount()).toBe(0);
+	});
 });

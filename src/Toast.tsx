@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 
 export type ToastTone = 'success' | 'error';
 
@@ -34,14 +34,26 @@ const ToastContext = createContext<ToastContextValue | null>(null);
 export const ToastProvider = ({ children }: ToastProviderProps) => {
 	const [toasts, setToasts] = useState<ToastEntry[]>([]);
 	const nextIdRef = useRef(0);
+	const timeoutsRef = useRef(new Set<ReturnType<typeof setTimeout>>());
+
+	useEffect(() => {
+		const timeouts = timeoutsRef.current;
+		return () => {
+			for (const timeout of timeouts) {
+				clearTimeout(timeout);
+			}
+		};
+	}, []);
 
 	const show = useCallback((options: ToastOptions) => {
 		const id = nextIdRef.current;
 		nextIdRef.current += 1;
 		setToasts((current) => [...current, { ...options, id }]);
-		setTimeout(() => {
+		const timeout = setTimeout(() => {
+			timeoutsRef.current.delete(timeout);
 			setToasts((current) => current.filter((toast) => toast.id !== id));
 		}, TOAST_DURATION_MS);
+		timeoutsRef.current.add(timeout);
 	}, []);
 
 	const value = useMemo(() => ({ show }), [show]);
