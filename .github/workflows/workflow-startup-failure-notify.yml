@@ -10,6 +10,7 @@ on:
       - node-utils-update
       - node-verify
       - Publish Userscript
+      - npm-publish
     types:
       - completed
 
