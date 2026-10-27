@@ -12,3 +12,4 @@
 next-env.d.ts
 node_modules/
 # @sapphire-sh/utils:end
+/playground/out/

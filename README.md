@@ -22,3 +22,7 @@ The theme reads two font variables that the app fills with `next/font/google`:
 
 - `--font-noto-sans-kr`: `Noto_Sans_KR` loaded with `variable: '--font-noto-sans-kr'`
 - `--font-jetbrains-mono`: `JetBrains_Mono` loaded with `variable: '--font-jetbrains-mono'`
+
+## Samples
+
+https://sapphire-sh.github.io/sapphire-ui/
