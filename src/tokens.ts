@@ -1,6 +1,6 @@
 export const colorTokens = {
 	light: {
-		background: 'oklch(0.985 0.004 255)',
+		background: 'oklch(1 0 0)',
 		surface: 'oklch(1 0 0)',
 		raised: 'oklch(0.955 0.007 255)',
 		border: 'oklch(0.895 0.01 255)',

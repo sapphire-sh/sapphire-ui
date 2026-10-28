@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import type { ReactNode } from 'react';
 import { currentNavHref } from './navHref.js';
 
 export interface NavItem {
@@ -13,6 +14,7 @@ export interface NavItem {
 export interface NavProps {
 	brand: string;
 	items: readonly NavItem[];
+	actions?: ReactNode;
 }
 
 const LINK_CLASS = 'block rounded-md px-2.5 py-1 text-sm';
@@ -22,7 +24,7 @@ const IDLE_LINK_CLASS = 'text-muted hover:text-foreground';
 const flattenNavItems = (items: readonly NavItem[]): NavItem[] =>
 	items.flatMap((item) => [item, ...flattenNavItems(item.children ?? [])]);
 
-export const Nav = ({ brand, items }: NavProps) => {
+export const Nav = ({ brand, items, actions }: NavProps) => {
 	const pathname = usePathname();
 	const current = currentNavHref(pathname, flattenNavItems(items));
 
@@ -56,6 +58,7 @@ export const Nav = ({ brand, items }: NavProps) => {
 					</li>
 				))}
 			</ul>
+			{actions !== undefined && <div className="ml-auto">{actions}</div>}
 		</nav>
 	);
 };

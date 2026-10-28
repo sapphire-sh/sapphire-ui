@@ -9,5 +9,6 @@ export { currentNavHref } from './navHref.js';
 export { Pagination } from './Pagination.js';
 export { paginationTargets } from './paginationTargets.js';
 export { LoadingBlock, Spinner } from './Spinner.js';
+export { ThemeToggle } from './ThemeToggle.js';
 export { ToastProvider, useToast } from './Toast.js';
 export { colorTokens } from './tokens.js';
