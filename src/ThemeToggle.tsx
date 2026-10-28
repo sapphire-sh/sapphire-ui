@@ -20,9 +20,17 @@ const getSnapshot = (): ColorScheme => (window.matchMedia(DARK_QUERY).matches ? 
 
 const getServerSnapshot = (): ColorScheme => 'light';
 
+const readPressedScheme = (): ColorScheme | null => {
+	if (typeof document === 'undefined') {
+		return null;
+	}
+	const { theme } = document.documentElement.dataset;
+	return theme === 'light' || theme === 'dark' ? theme : null;
+};
+
 export const ThemeToggle = () => {
 	const systemScheme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-	const [pressedScheme, setPressedScheme] = useState<ColorScheme | null>(null);
+	const [pressedScheme, setPressedScheme] = useState<ColorScheme | null>(readPressedScheme);
 	const scheme = pressedScheme ?? systemScheme;
 	const Icon = scheme === 'dark' ? Sun : Moon;
 

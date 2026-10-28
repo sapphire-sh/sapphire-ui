@@ -36,4 +36,10 @@ describe('ThemeToggle', () => {
 		fireEvent.click(button);
 		expect(button.getAttribute('aria-pressed')).toBe('true');
 	});
+
+	it('reads the pressed scheme from data-theme on mount', () => {
+		document.documentElement.dataset.theme = 'dark';
+		render(<ThemeToggle />);
+		expect(screen.getByRole('button', { name: 'Dark mode' }).getAttribute('aria-pressed')).toBe('true');
+	});
 });
