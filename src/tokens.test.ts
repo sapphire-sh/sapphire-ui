@@ -30,3 +30,20 @@ describe('theme.css', () => {
 		}
 	});
 });
+
+describe('colorTokens', () => {
+	it('colorTokens carries warning and the three mark tokens in both schemes', () => {
+		expect(colorTokens.light).toMatchObject({
+			warning: 'oklch(0.555 0.163 49)',
+			'mark-rose': 'oklch(0.514 0.222 16.9)',
+			'mark-violet': 'oklch(0.491 0.27 292.6)',
+			'mark-slate': 'oklch(0.446 0.043 257.3)',
+		});
+		expect(colorTokens.dark).toMatchObject({
+			warning: 'oklch(0.828 0.189 84.4)',
+			'mark-rose': 'oklch(0.712 0.194 13.4)',
+			'mark-violet': 'oklch(0.811 0.111 293.6)',
+			'mark-slate': 'oklch(0.869 0.022 252.9)',
+		});
+	});
+});

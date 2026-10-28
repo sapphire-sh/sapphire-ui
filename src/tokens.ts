@@ -13,6 +13,10 @@ export const colorTokens = {
 		'accent-ink': 'oklch(0.42 0.16 258)',
 		danger: 'oklch(0.55 0.19 25)',
 		success: 'oklch(0.58 0.13 150)',
+		warning: 'oklch(0.555 0.163 49)',
+		'mark-rose': 'oklch(0.514 0.222 16.9)',
+		'mark-violet': 'oklch(0.491 0.27 292.6)',
+		'mark-slate': 'oklch(0.446 0.043 257.3)',
 	},
 	dark: {
 		background: 'oklch(0.17 0.012 255)',
@@ -28,5 +32,9 @@ export const colorTokens = {
 		'accent-ink': 'oklch(0.84 0.09 255)',
 		danger: 'oklch(0.71 0.16 25)',
 		success: 'oklch(0.75 0.13 150)',
+		warning: 'oklch(0.828 0.189 84.4)',
+		'mark-rose': 'oklch(0.712 0.194 13.4)',
+		'mark-violet': 'oklch(0.811 0.111 293.6)',
+		'mark-slate': 'oklch(0.869 0.022 252.9)',
 	},
 };
