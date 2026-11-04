@@ -44,7 +44,7 @@
 	},
 	"homepage": "https://github.com/sapphire-sh/sapphire-ui#readme",
 	"peerDependencies": {
-		"@sapphire-sh/utils": ">=3.42.0",
+		"@sapphire-sh/utils": ">=3.43.0",
 		"next": ">=16.0.0",
 		"react": ">=19.0.0",
 		"react-dom": ">=19.0.0",
@@ -52,7 +52,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
-		"@sapphire-sh/utils": "^3.42.0",
+		"@sapphire-sh/utils": "^3.43.0",
 		"@tailwindcss/postcss": "^4.3.3",
 		"@testing-library/react": "^16.3.3",
 		"@types/node": "^26.6.5",
