@@ -24,6 +24,7 @@
 		"bootstrap": "sapphire-bootstrap",
 		"prebuild": "rm -fr ./lib",
 		"build": "tsc -p tsconfig.build.json && cp src/theme.css lib/theme.css",
+		"theme:write": "npm run build && node scripts/themeCss.js",
 		"prepare": "npm run build",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
