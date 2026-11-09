@@ -39,6 +39,33 @@ describe('Modal', () => {
 		expect(onClose).toHaveBeenCalledTimes(1);
 	});
 
+	it('calls onClose when the dialog closes while open', () => {
+		const onClose = vi.fn();
+		render(
+			<Modal open onClose={onClose} title="Settings">
+				body
+			</Modal>,
+		);
+		fireEvent(screen.getByRole('dialog', { hidden: true }), new Event('close'));
+		expect(onClose).toHaveBeenCalledTimes(1);
+	});
+
+	it('skips onClose when the dialog closes after open becomes false', () => {
+		const onClose = vi.fn();
+		const { rerender } = render(
+			<Modal open onClose={onClose} title="Settings">
+				body
+			</Modal>,
+		);
+		rerender(
+			<Modal open={false} onClose={onClose} title="Settings">
+				body
+			</Modal>,
+		);
+		fireEvent(screen.getByRole('dialog', { hidden: true }), new Event('close'));
+		expect(onClose).toHaveBeenCalledTimes(0);
+	});
+
 	it('labels the dialog with its title', () => {
 		render(
 			<Modal open onClose={vi.fn()} title="Settings">

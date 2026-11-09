@@ -12,9 +12,11 @@ export interface ModalProps {
 
 export const Modal = ({ open, onClose, title, children }: ModalProps) => {
 	const dialogRef = useRef<HTMLDialogElement>(null);
+	const openRef = useRef(open);
 	const titleId = useId();
 
 	useEffect(() => {
+		openRef.current = open;
 		const dialog = dialogRef.current;
 		if (dialog === null) {
 			return;
@@ -34,6 +36,11 @@ export const Modal = ({ open, onClose, title, children }: ModalProps) => {
 			onCancel={(event) => {
 				event.preventDefault();
 				onClose();
+			}}
+			onClose={() => {
+				if (openRef.current) {
+					onClose();
+				}
 			}}
 			onClick={(event) => {
 				if (event.target === event.currentTarget) {
