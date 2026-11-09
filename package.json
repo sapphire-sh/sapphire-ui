@@ -31,7 +31,7 @@
 		"prettier:fix": "prettier --write .",
 		"test": "vitest run",
 		"playground:dev": "next dev playground",
-		"playground:build": "npm run build && next build playground"
+		"playground:build": "next build playground"
 	},
 	"repository": {
 		"type": "git",
