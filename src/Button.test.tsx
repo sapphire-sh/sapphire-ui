@@ -18,4 +18,11 @@ describe('Button', () => {
 			'rounded-md border px-3 py-1 text-sm focus-visible:outline-2 focus-visible:outline-accent bg-surface text-danger border-danger',
 		);
 	});
+
+	it('appends className after the variant classes', () => {
+		render(<Button className="w-full">Save</Button>);
+		expect(screen.getByRole('button', { name: 'Save' }).className).toBe(
+			'rounded-md border px-3 py-1 text-sm focus-visible:outline-2 focus-visible:outline-accent bg-surface text-foreground border-border w-full',
+		);
+	});
 });

@@ -1,6 +1,8 @@
 import type { LucideIcon } from 'lucide-react';
 import { ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
 import Link from 'next/link';
+import { joinClasses } from './joinClasses.js';
+import { IDLE_LINK_CLASS } from './linkClass.js';
 import type { PaginationTargetKind } from './paginationTargets.js';
 import { paginationTargets } from './paginationTargets.js';
 
@@ -25,7 +27,6 @@ const MOVE_TARGETS: Record<Exclude<PaginationTargetKind, 'page'>, MoveTarget> = 
 };
 
 const ITEM_CLASS = 'flex h-8 min-w-8 items-center justify-center rounded-md px-2 text-sm';
-const IDLE_ITEM_CLASS = 'text-muted hover:text-foreground';
 
 export const Pagination = ({ page, totalPages, hrefForPage }: PaginationProps) => (
 	<nav aria-label="Pagination">
@@ -38,7 +39,7 @@ export const Pagination = ({ page, totalPages, hrefForPage }: PaginationProps) =
 							<Link
 								href={hrefForPage(target)}
 								aria-current={isCurrent ? 'page' : undefined}
-								className={`${ITEM_CLASS} ${isCurrent ? 'bg-raised text-foreground' : IDLE_ITEM_CLASS}`}
+								className={joinClasses(ITEM_CLASS, isCurrent ? 'bg-raised text-foreground' : IDLE_LINK_CLASS)}
 							>
 								{target}
 							</Link>
@@ -48,7 +49,7 @@ export const Pagination = ({ page, totalPages, hrefForPage }: PaginationProps) =
 				const { icon: Icon, label } = MOVE_TARGETS[kind];
 				return (
 					<li key={kind}>
-						<Link href={hrefForPage(target)} aria-label={label} className={`${ITEM_CLASS} ${IDLE_ITEM_CLASS}`}>
+						<Link href={hrefForPage(target)} aria-label={label} className={joinClasses(ITEM_CLASS, IDLE_LINK_CLASS)}>
 							<Icon aria-hidden className="size-4" />
 						</Link>
 					</li>

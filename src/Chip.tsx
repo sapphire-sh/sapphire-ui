@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { joinClasses } from './joinClasses.js';
 
 export interface ChipProps {
 	pressed: boolean;
@@ -15,7 +16,7 @@ export const Chip = ({ pressed, onClick, children }: ChipProps) => (
 		type="button"
 		aria-pressed={pressed}
 		onClick={onClick}
-		className={`${CHIP_CLASS} ${pressed ? PRESSED_CHIP_CLASS : IDLE_CHIP_CLASS}`}
+		className={joinClasses(CHIP_CLASS, pressed ? PRESSED_CHIP_CLASS : IDLE_CHIP_CLASS)}
 	>
 		{children}
 	</button>

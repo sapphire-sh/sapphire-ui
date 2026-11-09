@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';
+import { joinClasses } from './joinClasses.js';
+import { IDLE_LINK_CLASS } from './linkClass.js';
 import { currentNavHref } from './navHref.js';
 
 export interface NavItem {
@@ -19,7 +21,6 @@ export interface NavProps {
 
 const LINK_CLASS = 'block rounded-md px-2.5 py-1 text-sm';
 const CURRENT_LINK_CLASS = 'bg-accent-soft text-accent-ink';
-const IDLE_LINK_CLASS = 'text-muted hover:text-foreground';
 
 const flattenNavItems = (items: readonly NavItem[]): NavItem[] =>
 	items.flatMap((item) => [item, ...flattenNavItems(item.children ?? [])]);
@@ -34,7 +35,7 @@ export const Nav = ({ brand, items, actions }: NavProps) => {
 			<Link
 				href={item.href}
 				aria-current={isCurrent ? 'page' : undefined}
-				className={`${LINK_CLASS} ${isCurrent ? CURRENT_LINK_CLASS : IDLE_LINK_CLASS}`}
+				className={joinClasses(LINK_CLASS, isCurrent ? CURRENT_LINK_CLASS : IDLE_LINK_CLASS)}
 			>
 				{item.label}
 			</Link>

@@ -27,4 +27,22 @@ describe('Nav', () => {
 		);
 		expect(screen.getByRole('navigation').contains(screen.getByRole('button', { name: 'Action' }))).toBe(true);
 	});
+
+	it('joins the current or idle link class onto the link class', () => {
+		render(
+			<Nav
+				brand="sapphire"
+				items={[
+					{ href: '/', label: 'Home' },
+					{ href: '/posts', label: 'Posts' },
+				]}
+			/>,
+		);
+		expect(screen.getByRole('link', { name: 'Posts' }).className).toBe(
+			'block rounded-md px-2.5 py-1 text-sm bg-accent-soft text-accent-ink',
+		);
+		expect(screen.getByRole('link', { name: 'Home' }).className).toBe(
+			'block rounded-md px-2.5 py-1 text-sm text-muted hover:text-foreground',
+		);
+	});
 });

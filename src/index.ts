@@ -19,6 +19,7 @@ export { paginationTargets } from './paginationTargets.js';
 export type { PaginationTarget, PaginationTargetKind } from './paginationTargets.js';
 export { LoadingBlock, Spinner } from './Spinner.js';
 export type { LoadingBlockProps } from './Spinner.js';
+export { CELL_CLASS, ROW_CLASS } from './tableClass.js';
 export { ThemeToggle } from './ThemeToggle.js';
 export type { ColorScheme } from './ThemeToggle.js';
 export { ToastProvider, useToast } from './Toast.js';

@@ -1,6 +1,6 @@
-export interface NavHrefItem {
-	href: string;
-}
+import type { NavItem } from './Nav.js';
+
+export type NavHrefItem = Pick<NavItem, 'href'>;
 
 const isSameOrAncestorPath = (href: string, pathname: string): boolean =>
 	pathname === href || pathname.startsWith(href.endsWith('/') ? href : `${href}/`);

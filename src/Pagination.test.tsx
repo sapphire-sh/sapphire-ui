@@ -21,4 +21,17 @@ describe('Pagination', () => {
 			'/posts?page=30',
 		]);
 	});
+
+	it('joins the current or idle class onto the item class', () => {
+		render(<Pagination page={15} totalPages={30} hrefForPage={(page) => `/posts?page=${page}`} />);
+		expect(screen.getByRole('link', { name: '15' }).className).toBe(
+			'flex h-8 min-w-8 items-center justify-center rounded-md px-2 text-sm bg-raised text-foreground',
+		);
+		expect(screen.getByRole('link', { name: '16' }).className).toBe(
+			'flex h-8 min-w-8 items-center justify-center rounded-md px-2 text-sm text-muted hover:text-foreground',
+		);
+		expect(screen.getByRole('link', { name: 'First page' }).className).toBe(
+			'flex h-8 min-w-8 items-center justify-center rounded-md px-2 text-sm text-muted hover:text-foreground',
+		);
+	});
 });

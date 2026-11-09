@@ -30,4 +30,23 @@ describe('Chip', () => {
 		fireEvent.click(screen.getByRole('button', { name: 'Open' }));
 		expect(onClick).toHaveBeenCalledTimes(1);
 	});
+
+	it('joins the pressed or idle class onto the chip class', () => {
+		render(
+			<>
+				<Chip pressed onClick={vi.fn()}>
+					Open
+				</Chip>
+				<Chip pressed={false} onClick={vi.fn()}>
+					Closed
+				</Chip>
+			</>,
+		);
+		expect(screen.getByRole('button', { name: 'Open' }).className).toBe(
+			'rounded-full border px-2.5 py-0.5 text-xs bg-accent-soft text-accent-ink border-transparent',
+		);
+		expect(screen.getByRole('button', { name: 'Closed' }).className).toBe(
+			'rounded-full border px-2.5 py-0.5 text-xs bg-transparent text-muted border-border',
+		);
+	});
 });

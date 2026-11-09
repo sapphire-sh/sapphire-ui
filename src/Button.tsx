@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes } from 'react';
+import { joinClasses } from './joinClasses.js';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'ghost';
 
@@ -16,9 +17,5 @@ const VARIANT_CLASS: Record<ButtonVariant, string> = {
 };
 
 export const Button = ({ variant = 'secondary', className, type = 'button', ...rest }: ButtonProps) => (
-	<button
-		{...rest}
-		type={type}
-		className={`${BUTTON_CLASS} ${VARIANT_CLASS[variant]}${className === undefined ? '' : ` ${className}`}`}
-	/>
+	<button {...rest} type={type} className={joinClasses(BUTTON_CLASS, VARIANT_CLASS[variant], className)} />
 );

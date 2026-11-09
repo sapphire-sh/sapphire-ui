@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import {
 	Button,
+	CELL_CLASS,
 	Chip,
 	DataTable,
 	EmptyState,
@@ -10,6 +11,7 @@ import {
 	LoadingBlock,
 	Modal,
 	Pagination,
+	ROW_CLASS,
 	useToast,
 } from '../../lib/index.js';
 
@@ -41,8 +43,6 @@ const STATUS_CLASS: Record<ProjectStatus, string> = {
 	Active: 'text-success',
 	Archived: 'text-muted',
 };
-
-const CELL_CLASS = 'px-3 py-2';
 
 const PlaygroundPage = () => {
 	const [query, setQuery] = useState('');
@@ -110,7 +110,7 @@ const PlaygroundPage = () => {
 							</thead>
 							<tbody>
 								{projects.map(({ name, status, tasks, updated }) => (
-									<tr key={name} className="border-t border-border">
+									<tr key={name} className={ROW_CLASS}>
 										<td className={CELL_CLASS}>{name}</td>
 										<td className={`${CELL_CLASS} ${STATUS_CLASS[status]}`}>{status}</td>
 										<td className={`${CELL_CLASS} text-right`}>{tasks}</td>
