@@ -9,12 +9,9 @@ import {
 	FIELD_CLASS,
 	LoadingBlock,
 	Modal,
-	Nav,
 	Pagination,
-	ThemeToggle,
 	useToast,
 } from '../../lib/index.js';
-import { NAV_ITEMS } from './navItems';
 
 type ProjectStatus = 'Active' | 'Archived';
 
@@ -61,7 +58,6 @@ const PlaygroundPage = () => {
 
 	return (
 		<>
-			<Nav brand="@sapphire-sh/ui" items={NAV_ITEMS} actions={<ThemeToggle />} />
 			<main className="mx-auto grid max-w-6xl gap-6 px-4 py-8 lg:grid-cols-[1fr_16rem]">
 				<div className="flex flex-col gap-4">
 					<header className="flex items-center justify-between gap-4">

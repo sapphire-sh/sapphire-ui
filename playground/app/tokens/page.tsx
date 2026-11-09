@@ -1,13 +1,11 @@
 'use client';
 
-import { Nav, ThemeToggle, colorTokens } from '../../../lib/index.js';
-import { NAV_ITEMS } from '../navItems';
+import { colorTokens } from '../../../lib/index.js';
 
 const TOKEN_SCHEMES = ['light', 'dark'] as const;
 
 const TokensPage = () => (
 	<>
-		<Nav brand="@sapphire-sh/ui" items={NAV_ITEMS} actions={<ThemeToggle />} />
 		<main className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8">
 			<h1 className="text-xl font-semibold">Color tokens</h1>
 			{TOKEN_SCHEMES.map((scheme) => (

@@ -6,6 +6,8 @@ import { Button } from './Button.js';
 
 export type ColorScheme = 'light' | 'dark';
 
+type ThemeMode = 'system' | ColorScheme;
+
 const DARK_QUERY = '(prefers-color-scheme: dark)';
 
 const subscribe = (onChange: () => void) => {
@@ -20,18 +22,22 @@ const getSnapshot = (): ColorScheme => (window.matchMedia(DARK_QUERY).matches ? 
 
 const getServerSnapshot = (): ColorScheme => 'light';
 
-const readPressedScheme = (): ColorScheme | null => {
+const readPressedScheme = (): ThemeMode => {
 	if (typeof document === 'undefined') {
-		return null;
+		return 'system';
 	}
 	const { theme } = document.documentElement.dataset;
-	return theme === 'light' || theme === 'dark' ? theme : null;
+	return theme === 'light' || theme === 'dark' ? theme : 'system';
+};
+
+const writeThemeMode = (mode: ColorScheme) => {
+	document.documentElement.dataset.theme = mode;
 };
 
 export const ThemeToggle = () => {
 	const systemScheme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-	const [pressedScheme, setPressedScheme] = useState<ColorScheme | null>(readPressedScheme);
-	const scheme = pressedScheme ?? systemScheme;
+	const [mode, setMode] = useState<ThemeMode>(readPressedScheme);
+	const scheme = mode === 'system' ? systemScheme : mode;
 	const Icon = scheme === 'dark' ? Sun : Moon;
 
 	return (
@@ -41,8 +47,8 @@ export const ThemeToggle = () => {
 			aria-pressed={scheme === 'dark'}
 			onClick={() => {
 				const next = scheme === 'dark' ? 'light' : 'dark';
-				setPressedScheme(next);
-				document.documentElement.dataset.theme = next;
+				setMode(next);
+				writeThemeMode(next);
 			}}
 		>
 			<Icon aria-hidden className="size-4" />
