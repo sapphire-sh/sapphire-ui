@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { JetBrains_Mono, Noto_Sans_KR } from 'next/font/google';
 import type { ReactNode } from 'react';
-import { Nav, ThemeToggle, ToastProvider } from '../../lib/index.js';
+import { ThemeToggle, ToastProvider } from '../../lib/index.js';
+import { Nav } from '../../lib/Nav.js';
 import './globals.css';
 import { NAV_ITEMS } from './navItems';
 

@@ -15,6 +15,14 @@
 			"types": "./lib/tokens.d.ts",
 			"import": "./lib/tokens.js"
 		},
+		"./nav": {
+			"types": "./lib/Nav.d.ts",
+			"import": "./lib/Nav.js"
+		},
+		"./pagination": {
+			"types": "./lib/Pagination.d.ts",
+			"import": "./lib/Pagination.js"
+		},
 		"./theme.css": "./lib/theme.css"
 	},
 	"files": [

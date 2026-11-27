@@ -23,6 +23,15 @@ The theme reads two font variables that the app fills with `next/font/google`:
 - `--font-noto-sans-kr`: `Noto_Sans_KR` loaded with `variable: '--font-noto-sans-kr'`
 - `--font-jetbrains-mono`: `JetBrains_Mono` loaded with `variable: '--font-jetbrains-mono'`
 
+## Next.js components
+
+`Nav` and `Pagination` import `next/link`, so they load from their own entries:
+
+```ts
+import { Nav } from '@sapphire-sh/ui/nav';
+import { Pagination } from '@sapphire-sh/ui/pagination';
+```
+
 ## Samples
 
 https://sapphire-sh.github.io/sapphire-ui/

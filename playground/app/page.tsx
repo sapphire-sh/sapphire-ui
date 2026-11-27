@@ -10,10 +10,10 @@ import {
 	FIELD_CLASS,
 	LoadingBlock,
 	Modal,
-	Pagination,
 	ROW_CLASS,
 	useToast,
 } from '../../lib/index.js';
+import { Pagination } from '../../lib/Pagination.js';
 
 type ProjectStatus = 'Active' | 'Archived';
 
